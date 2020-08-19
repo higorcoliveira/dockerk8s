@@ -27,6 +27,7 @@ Exemplo:
 ### Deploy no k8s
 No diretório resources/k8s está o arquivo de deployment, basta aplicar no seu cluster k8s com
 ```kubectl apply -f deployment.yaml```
+Em seguida, criar o serviço
 ```kubectl apply -f service.yaml```
 
 ### Expor o serviço
