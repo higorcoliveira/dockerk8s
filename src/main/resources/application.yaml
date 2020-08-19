@@ -1,0 +1,11 @@
+server:
+  port: 8081
+
+my:
+  config: Grupo
+
+# enable liveness and readiness probes
+management:
+  health:
+    probes:
+      enabled: true

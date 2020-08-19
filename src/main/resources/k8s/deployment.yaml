@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: spring-boot-jib
+  name: spring-boot-jib
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-boot-jib
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: spring-boot-jib
+    spec:
+      containers:
+      - image: higorcoliveira/spring-boot-jib:1.0.0
+        name: spring-boot-jib
+        resources: {}
+        readinessProbe:
+          httpGet:
+            port: 8081
+            path: /actuator/health/readiness
+        livenessProbe:
+          httpGet:
+            port: 8081
+            path: /actuator/health/liveness
+status: {}
