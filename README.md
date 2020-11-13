@@ -33,6 +33,19 @@ Em seguida, criar o serviço
 ### Expor o serviço
 ```kubectl port-forward service/spring-boot-jib 8081:80```
 
+## Push para o ECR
+-1) Para realizar o push no ECR, descomentar a linha 71 e comentar a linha 70 do pom.xml.
+Em seguida, executar o comando (é necessário ter o aws-cli):
+```
+ECR_PASSWORD=$(aws ecr get-login-password --region us-east-1) mvn compile jib:build
+```
+Esse comando pega a credencial para push da imagem no ECR, baseando-se no profile aws configurado 
+na máquina e no arquivo ~/.aws/credentials. Em seguida, escreve na variável de ambiente $ECR_PASSWORD
+
+-2) Caso não queira instalar o aws-cli e utilizar variável de ambiente, pode ser utilizada a ferramenta 
+https://github.com/awslabs/amazon-ecr-credential-helper. Após instalar e configurar o utilitário
+seguindo as instruções contidas no github, descomentar a linha 77 e comentar a linha 76 do pom.xml
+
 ## Sobre o Jip 
 - Ferramenta para construir containers java (https://github.com/GoogleContainerTools/jib)
 - Otimiza a construção das imagens por camada, tornando os deploys mais rápidos

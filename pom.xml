@@ -68,11 +68,13 @@
 <!--					</from>-->
 					<to>
 						<image>higorcoliveira/spring-boot-jib</image>
+<!--						<image>XXXXX0537853.dkr.ecr.us-east-1.amazonaws.com/spring-boot-jib</image>-->
 						<auth>
 							<!--suppress UnresolvedMavenProperty -->
-							<username>${env.REGISTRY_USERNAME}</username>
+							<username>AWS</username>
 							<!--suppress UnresolvedMavenProperty -->
-							<password>${env.REGISTRY_PASSWORD}</password>
+							<password>${env.ECR_PASSWORD}</password>
+<!--							<credHelper>ecr-login</credHelper>-->
 						</auth>
 <!--						<tags>-->
 <!--							<tag>tag2</tag>-->
